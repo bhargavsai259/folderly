@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js",
-    "build": "vite build"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +28,6 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9",
-    "vite": "^4.0.0"
+    "nodemon": "^3.1.9"
   }
 }
