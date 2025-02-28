@@ -14,20 +14,20 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost','https://folderly-jf9p141ek-bhargavs-projects-7cb2e467.vercel.app'],
-    methods: ['GET', 'POST','PUT','DELETE'],
+    origin: ['http://localhost:5173', 'http://localhost', 'https://folderly-jf9p141ek-bhargavs-projects-7cb2e467.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-  }));
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+
 // Initialize token cleanup job
- setupTokenCleanupJob();
+setupTokenCleanupJob();
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ MongoDB Connected"))
     .catch(err => console.log("❌ MongoDB Connection Error:", err));
-
 
 // Use routes
 app.use("/api/auth", authRoutes);
@@ -37,13 +37,13 @@ app.use("/api/folder", folderRoutes);
 // Test email route
 app.get('/test-email', async (req, res) => {
     try {
-      await sendResetEmail('your-test-email@example.com', '123456');
-      res.json({ msg: 'Test email sent' });
+        await sendResetEmail('your-test-email@example.com', '123456');
+        res.json({ msg: 'Test email sent' });
     } catch (err) {
-      console.error('Test email error:', err);
-      res.status(500).json({ msg: err.message });
+        console.error('Test email error:', err);
+        res.status(500).json({ msg: err.message });
     }
-  });
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;
