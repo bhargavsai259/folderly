@@ -14,7 +14,7 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost'],
+    origin: ['http://localhost:5173', 'http://localhost','https://folderly-jf9p141ek-bhargavs-projects-7cb2e467.vercel.app'],
     methods: ['GET', 'POST','PUT','DELETE'],
     credentials: true,
   }));
