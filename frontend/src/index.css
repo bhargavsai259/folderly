@@ -1,0 +1,10 @@
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --text-color: #333;
+  }
+  
+  body {
+    font-family: var(--primary-font);
+    color: var(--text-color);
+  }
+  

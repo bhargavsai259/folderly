@@ -1,0 +1,70 @@
+/* adduserform.css */
+.add-user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.add-user-form input,
+.add-user-form select {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.add-user-form input:focus,
+.add-user-form select:focus,
+.modify-form input:focus,
+.modify-form select:focus {
+  border-color: rgb(0, 123, 255);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.add-user-form button,
+.modify-form button {
+  padding: 0.75rem;
+  background-color: rgb(0, 123, 255);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-user-form button:hover,
+.modify-form button:hover {
+  background-color: rgb(0, 103, 230);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .add-user-form {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .add-user-form input,
+  .add-user-form select,
+  .add-user-form button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+.success-message {
+  color: green;
+  margin-bottom: 10px;
+  text-align: center;
+}

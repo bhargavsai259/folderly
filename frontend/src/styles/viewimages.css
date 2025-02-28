@@ -1,0 +1,879 @@
+/* viewimages.css */
+/* Add a smooth transition for the hover and disabled states */
+button.bg-green-500 {
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+/* Adjust the background color on hover */
+button.bg-green-500:hover {
+  background-color: #38a169; /* Darker green */
+}
+
+/* Style for the disabled state */
+button.bg-green-500:disabled {
+  background-color: #48bb78; /* Lighter green */
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Optional: Customize padding, text, and borders */
+button.bg-green-500 {
+  padding: 0.5rem 1rem; /* Adjust padding */
+  font-size: 1rem; /* Adjust font size */
+  border-radius: 0.375rem; /* Round corners */
+}
+
+/* Add focus outline */
+button.bg-green-500:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(72, 180, 120, 0.5); /* Green shadow for focus */
+}
+
+/* General Styles for Overlay Buttons */
+.overlay-button {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.overlay-button:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+}
+
+/* Specific styles for delete, edit, and show buttons */
+.delete-button {
+  background: rgba(255, 59, 48, 0.8); /* Red background for delete */
+  color: white;
+}
+
+.delete-button:hover {
+  background: rgba(255, 59, 48, 1); /* Darker red on hover */
+}
+
+.edit-button {
+  background: #34c759cc; /* Green background for edit */
+  color: white;
+}
+
+.edit-button:hover {
+  background: rgba(52, 199, 89, 1); /* Darker green on hover */
+}
+
+.show-button {
+  background: rgba(0, 122, 255, 0.8); /* Blue background for show */
+  color: white;
+}
+
+.show-button:hover {
+  background: rgba(0, 122, 255, 1); /* Darker blue on hover */
+}
+
+/* Image Overlay Styles */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Space between buttons */
+  opacity: 0; /* Hide overlay by default */
+  transition: opacity 0.3s ease;
+}
+
+.image-item:hover .image-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+/* Popup Overlay and Content Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  position: relative;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 5px;
+}
+
+.popup-description {
+  margin-top: 10px;
+  font-size: 16px;
+  color: hsl(0, 22%, 96%);
+}
+
+.popup-actions {
+  margin-top: 10px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #FF3B30; /* Red background */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.image-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  z-index: 1010;
+}
+
+/* Upload Container and Button Styles */
+.upload-container {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+.upload-label {
+  display: inline-block;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  border: 2px solid #ccc;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-label:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.05);
+}
+
+.upload-label.uploading {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.upload-label.uploading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+.upload-input {
+  display: none;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007AFF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite reverse;
+  margin-right: 8px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Upload Progress Styles */
+.upload-progress-container {
+  margin-top: 16px;
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-progress-item {
+  margin-bottom: 12px;
+}
+
+.upload-progress-item:last-child {
+  margin-bottom: 0;
+}
+
+.upload-progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.upload-filename {
+  color: #333;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 70%;
+}
+
+.upload-percentage {
+  color: #666;
+}
+
+.upload-progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #007AFF, #00C6FF);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  position: relative;
+  width: 0%;
+}
+
+.upload-progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: progress-shine 1s infinite;
+}
+
+/* Image Grid Styles */
+.image-grid {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  max-width: 1200px;
+}
+
+.image-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  background: #fff;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-description {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  word-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+}
+
+/* Dialog Box Styles */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}
+
+.dialog-box input.description-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.dialog-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.dialog-buttons button:hover {
+  background: #ddd;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+
+    /* Upload Container and Button Styles */
+.upload-container {
+    grid-column: 1 / -1;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+  
+  .upload-label {
+    display: inline-block;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: 2px solid #ccc;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .upload-label:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+  }
+  
+  .upload-label.uploading {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    position: relative;
+  }
+  
+  .upload-label.uploading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .upload-input {
+    display: none;
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .upload-container {
+      display: flex;
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      width: 100%; /* Ensure full width */
+    }
+  
+    .upload-label {
+      padding: 10px 16px;
+      font-size: 14px;
+      display: block;
+      width: fit-content;
+      margin: 0 auto; /* Center the button and remove extra space */
+    }
+  }
+  .overlay-button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .image-overlay {
+    gap: 8px;
+  }
+
+  .image-grid {
+    grid-template-columns: 1fr;
+    padding: 8px;
+    gap: 12px;
+    margin-top: 0px;
+  }
+
+  .image-item {
+    box-shadow: none;
+    margin-bottom: 16px;
+  }
+
+  .image {
+    height: 180px;
+  }
+
+  .image-description {
+    font-size: 12px;
+    padding: 8px;
+    min-height: 30px;
+  }
+
+  .dialog-box {
+    padding: 16px;
+    width: 90%;
+  }
+
+  .dialog-buttons button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .carousel-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .carousel-button.prev {
+    left: 5px;
+  }
+
+  .carousel-button.next {
+    right: 5px;
+  }
+
+  .image-counter {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .popup-content {
+    padding: 10px;
+  }
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progress-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.back-button svg {
+  stroke:black;
+}
+/* viewimages.css */
+
+/* Upload Container */
+.upload-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Upload Label (File Input) */
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007AFF;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-label:hover {
+  background-color: #005BB5;
+}
+
+.upload-label.uploading {
+  background-color: #007AFF;
+  cursor: not-allowed;
+}
+
+.upload-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+
+.upload-input {
+  display: none;
+}
+
+/* Upload Button */
+.upload-button {
+  background-color: #34C759;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #248A3D;
+}
+
+.upload-button:disabled {
+  background-color: #AEAEB2;
+  cursor: not-allowed;
+}
+
+/* Upload Progress */
+.upload-progress-container {
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
+}
+
+.upload-progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background-color: #E5E5EA;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  background-color: #007AFF;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.upload-percentage {
+  font-size: 12px;
+  color: #8E8E93;
+  margin-top: 4px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .upload-container {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .upload-label,
+  .upload-button {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+  }
+
+  .upload-progress-container {
+      max-width: 100%;
+  }
+}
+.success-message {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  animation: fadeOut 0.5s 4.5s forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Add this to your viewimages.css file */
+
+.upload-button {
+  background-color: #10b981; /* Tailwind's green-500 */
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+
+.upload-button:hover {
+  background-color: #059669; /* Tailwind's green-600 */
+}
+
+.upload-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* You can also add these styles to ensure the upload container looks good */
+.upload-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.selected-files-count {
+  margin-left: 10px;
+  font-size: 0.9rem;
+  color: #6b7280; /* Tailwind's gray-500 */
+}
+
+/* Ensure only one progress bar is shown */
+.upload-progress-container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.upload-progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb; /* Tailwind's gray-200 */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.upload-progress-bar {
+  height: 100%;
+  background-color: #10b981; /* Tailwind's green-500 */
+  transition: width 0.3s ease;
+}
+/* Fixed Popup Content */
+.popup-content {
+  position: relative;
+  background: transparent;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;      /* Set fixed width */
+  height: 90vh;    /* Set fixed height using viewport height */
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevent content from expanding container */
+}
+
+.popup-image {
+  max-width: 100%;
+  max-height: 75vh;  /* Limit image height */
+  object-fit: contain; /* Maintain aspect ratio without cropping */
+  border-radius: 5px;
+}
+
+/* Preserve close button styling */
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #FF3B30; /* Red background */
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1020; /* Ensure it's above other elements */
+  padding: 0; /* Remove padding to maintain circle shape */
+  line-height: 1; /* Help center the × symbol */
+}
+
+.close-popup:hover {
+  background: #E0352C; /* Slightly darker red on hover */
+}
+
+/* Fixed Carousel Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 75vh;     /* Fixed height for carousel */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fixed position for carousel buttons */
+.carousel-button {
+  position: fixed;  /* Change from absolute to fixed */
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 1010;
+}
+
+/* Set fixed horizontal positions for buttons */
+.carousel-button.prev {
+  left: 5%;  /* Position from left edge of viewport */
+}
+
+.carousel-button.next {
+  right: 5%; /* Position from right edge of viewport */
+}
+
+/* Image counter position adjustment */
+.image-counter {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  z-index: 1010;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .popup-content {
+    width: 95%;
+    height: 85vh;
+    padding: 10px;
+  }
+  
+  .carousel-button {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+  
+  .carousel-button.prev {
+    left: 2%;
+  }
+  
+  .carousel-button.next {
+    right: 2%;
+  }
+  
+  .close-popup {
+    top: 5px;
+    right: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+  }
+}
