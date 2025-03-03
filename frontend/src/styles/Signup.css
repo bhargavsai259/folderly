@@ -1,0 +1,270 @@
+/* src/styles/Signup.css */
+
+/* General styles for the signup container */
+.signup-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signup-container h2 {
+  margin-bottom: 20px;
+  color: #333; /* Dark text color */
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333; /* Dark text color */
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Error message */
+.error-message {
+  color: #dc3545;
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Password input container */
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  padding-right: 40px;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+/* Signup button styles */
+.signup-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #28a745;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+  background-color: #218838;
+}
+
+.signup-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Links styles */
+.links {
+  margin-top: 20px;
+}
+
+.links a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Success card styles */
+#card {
+  position: relative;
+  top: 110px;
+  width: 320px;
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+#upper-side {
+  padding: 2em;
+  background-color: #28a745; /* Green background matching signup button */
+  display: block;
+  color: #fff;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+#checkmark {
+  font-weight: lighter;
+  fill: #fff;
+  margin: -3.5em auto auto 20px;
+}
+
+#status {
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1em;
+  margin-top: -0.2em;
+  margin-bottom: 0;
+}
+
+#lower-side {
+  padding: 2em 2em 5em;
+  background: #fff;
+  display: block;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+#message {
+  margin-top: -0.5em;
+  color: #757575;
+  letter-spacing: 1px;
+}
+
+#contBtn {
+  position: relative;
+  top: 1.5em;
+  text-decoration: none;
+  background: #28a745; /* Green to match signup button */
+  color: #fff;
+  margin: auto;
+  padding: 0.8em 3em;
+  box-shadow: 0 15px 30px rgba(40, 167, 69, 0.2);
+  border-radius: 25px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border: 0;
+  font-size: 16px;
+}
+
+#contBtn:hover {
+  box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4);
+  background-color: #218838;
+  transition: all 0.4s ease;
+}
+
+/* Animation for success card */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+}
+
+/* Media queries for responsive design */
+/* Tablets */
+@media (max-width: 768px) {
+  .signup-container {
+    max-width: 90%;
+    margin: 30px auto;
+    padding: 15px;
+  }
+  
+  .signup-button {
+    padding: 10px;
+  }
+  
+  #card {
+    width: 90%;
+    max-width: 320px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .signup-container {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .signup-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .signup-button {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  #card {
+    top: 70px;
+    width: 90%;
+  }
+  
+  #upper-side {
+    padding: 1.5em;
+  }
+  
+  #lower-side {
+    padding: 1.5em 1.5em 4em;
+  }
+  
+  #message {
+    font-size: 0.9rem;
+  }
+  
+  #contBtn {
+    padding: 0.7em 2em;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,273 @@
+/* Profile Menu Container Base Styles */
+.profile-menu-container {
+    position: relative;
+    z-index: 1000;
+}
+
+/* Profile Button Styles */
+.profile-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    padding: 0;
+}
+
+.profile-button:hover {
+    background: #e0e0e0;
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profile-text {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.arrow-icon.open {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu Base Styles */
+.profile-dropdown {
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 220px;
+    padding: 8px;
+    z-index: 1008;
+    animation: slide 0.2s ease-out;
+}
+
+@keyframes slide {
+    from {
+        transform: translate(-50%, 10px);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+/* User Info Section */
+.user-info {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.user-email {
+    font-size: 14px;
+    color: #666;
+    word-break: break-all;
+}
+
+/* Menu Items */
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 14px;
+}
+
+.menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+.menu-item svg {
+    color: #666;
+}
+
+/* Menu Divider */
+.menu-divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 8px 0;
+}
+
+/* Special Menu Items */
+.menu-item.admin {
+    color: #2196f3;
+}
+
+.menu-item.admin svg {
+    color: #2196f3;
+}
+
+.menu-item.logout {
+    color: #f44336;
+}
+
+.menu-item.logout svg {
+    color: #f44336;
+}
+
+/* Desktop Specific Styles */
+@media (min-width: 769px) {
+    .profile-menu-container {
+        position: sticky;
+        bottom: 0;
+        background: #d3d3d3;
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .profile-button {
+        width: 100%;
+        border-radius: 8px;
+        height: 45px;
+        background: #f0f0f0;
+        border: 1px solid black;
+    }
+
+    .profile-dropdown {
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    .profile-menu-container.mobile {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .profile-menu-container.mobile .profile-button {
+        background: rgba(255, 255, 255, 0.1);
+        width: auto;
+        background: transparent;
+    }
+
+    .profile-menu-container.mobile .profile-text {
+        display: none;
+    }
+
+    .profile-menu-container.mobile .profile-button svg {
+        color: white;
+    }
+
+    .profile-dropdown.mobile {
+        top: calc(100% + 10px);
+        right: 0;
+        transform: translateY(0);
+    }
+}
+
+/* Accessibility and Focus Styles */
+.profile-button:focus,
+.menu-item:focus,
+.profile-dropdown:focus-within {
+    outline: 2px solid #2196f3;
+    outline-offset: 2px;
+}
+
+.profile-button:focus:not(:focus-visible),
+.menu-item:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+    .menu-item {
+        padding: 16px 12px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .profile-button {
+        background: #444;
+    }
+
+    .profile-text {
+        color: #e0e0e0;
+    }
+
+    .profile-dropdown {
+        background: #2d2d2d;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .menu-item {
+        color: #e0e0e0;
+    }
+
+    .menu-item:hover {
+        background-color: #3d3d3d;
+    }
+
+    .menu-divider {
+        background-color: #404040;
+    }
+
+    .user-email {
+        color: #aaa;
+    }
+
+    .menu-item svg {
+        color: #aaa;
+    }
+
+    .profile-button:hover {
+        background: #555;
+    }
+}
+
+/* Loading State */
+.profile-menu-container.loading .profile-button {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.profile-menu-container.loading .profile-dropdown {
+    pointer-events: none;
+}
+
+/* Error State */
+.profile-menu-container.error .profile-button {
+    border: 2px solid #f44336;
+}
+
+/* Active/Selected State */
+.menu-item.active {
+    background-color: #f0f0f0;
+    font-weight: 500;
+}
+
+/* RTL Support */
+[dir="rtl"] .profile-dropdown {
+    left: auto;
+    right: 0;
+}
+
+[dir="rtl"] .menu-item {
+    flex-direction: row-reverse;
+}

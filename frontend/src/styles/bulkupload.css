@@ -1,0 +1,281 @@
+
+
+.download-sample-section {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.download-link:hover {
+  text-decoration: underline;
+}.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: white;
+  border-bottom: 2px solid #e9ecef;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-title {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin: 0;
+  padding-left: 0.5rem;
+}
+
+/* Back Button Styles */
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+}
+
+/* Button Styles */
+.bulk-upload-button {
+  background-color: rgb(0, 123, 255);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.bulk-upload-button:hover {
+  background-color: rgb(0, 103, 230);
+  transform: translateY(-1px);
+}
+
+.bulk-upload-button:disabled {
+  background-color: #b3b3b3;
+  cursor: not-allowed;
+}
+
+.upload-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.upload-button:hover {
+  background-color: #218838;
+}
+
+.upload-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+}
+
+/* File Upload Styles */
+.file-upload-section {
+  margin-bottom: 1.5rem;
+}
+
+.file-upload-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.upload-instructions {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.file-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-input:hover {
+  border-color: #0056b3;
+  background-color: #f8f9fa;
+}
+
+/* Progress and Status Styles */
+.progress-bar-container {
+  margin: 1rem 0;
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #28a745;
+  transition: width 0.3s ease;
+}
+
+.status-message {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.error-list {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .admin-header {
+    position: relative;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .admin-left {
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    padding-left: 24px; /* Make space for the back button */
+  }
+
+  .admin-title {
+    font-size: 1.5rem;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .bulk-upload-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .back-button {
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0.25rem;
+    z-index: 1;
+  }
+
+  .back-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .back-button span {
+    display: inline;
+    font-size: 0.875rem;
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+}
