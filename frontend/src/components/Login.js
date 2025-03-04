@@ -6,10 +6,7 @@ import '../styles/Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useAuth } from './AuthContext';
 
-//const SECRET_KEY = "Kedhareswarmatha";
-
 const Login = () => {
-
   const navigate = useNavigate();
   const { login } = useAuth(); // Use the login function from context
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -20,10 +17,6 @@ const Login = () => {
   const { email, password } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  // const encryptPassword = (password) => {
-  //   return CryptoJS.AES.encrypt(password, SECRET_KEY).toString();
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -38,18 +31,13 @@ const Login = () => {
     }
 
     try {
-    //  const encryptedPassword = encryptPassword(password);
-
-      // Send the login request
       const res = await api.post('/api/auth/login', {
         email,
-        password: password, // Using the unencrypted password as in your original code
+        password: password,
       });
 
-      // Use the login function from context
       login(res.data);
 
-      // Redirect based on user role
       if (res.data.user.role === 'admin') {
         navigate('/');
       } else {
@@ -68,9 +56,11 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      {/* Reference the image from the public folder */}
+      <img src="/logo512.png" alt="App Logo" className="login-logo" />
+      <h2>Snap Book</h2>
+      {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit}>
-        {error && <div className="error-message">{error}</div>}
         <div className="form-group">
           <label>EMAIL:</label>
           <input
@@ -78,11 +68,10 @@ const Login = () => {
             name="email"
             value={email}
             onChange={onChange}
-            placeholder="Enter your email"
             required
           />
         </div>
-        <div className="form-group ">
+        <div className="form-group">
           <label>PASSWORD:</label>
           <div className="password-input-wrapper">
             <input
@@ -90,7 +79,6 @@ const Login = () => {
               name="password"
               value={password}
               onChange={onChange}
-              placeholder="Enter your password"
               required
             />
             <span className="password-toggle-icon" onClick={togglePasswordVisibility}>
@@ -98,11 +86,10 @@ const Login = () => {
             </span>
           </div>
         </div>
-        <button type="submit" disabled={loading} className="login-button">
+        <button type="submit" className="login-button" disabled={loading}>
           {loading ? 'Logging in...' : 'LOGIN'}
         </button>
       </form>
-      {/* Divider with "or" text */}
       <div className="divider">
         <div className="divider-line"></div>
         <div className="divider-text">or</div>
@@ -110,9 +97,7 @@ const Login = () => {
       </div>
       <div className="links">
         <Link to="/forgot-password">Forgot Password?</Link>
-        <div>
-          Don't have an account? <Link to="/register">Sign Up</Link>
-        </div>
+        <Link to="/register">Don't have an account? Sign Up</Link>
       </div>
     </div>
   );

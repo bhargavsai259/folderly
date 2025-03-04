@@ -1,3 +1,4 @@
+/* src/styles/Login.css */
 .login-container {
   max-width: 400px;
   margin: 50px auto;
@@ -5,6 +6,13 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   text-align: center;
+}
+
+.login-logo {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  margin-bottom: 20px;
+  border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 .login-container h2 {
@@ -19,7 +27,6 @@
 .form-group label {
   display: block;
   margin-bottom: 5px;
-  /* Removed the padding: 10px; which was causing the label to take extra space */
 }
 
 .form-group input {
@@ -79,7 +86,6 @@
   text-decoration: underline;
 }
 
-
 /* Divider styles */
 .divider {
   display: flex;
@@ -99,6 +105,125 @@
   font-size: 14px;
 }
 
+/* Mobile View */
+@media (max-width: 768px) {
+  .login-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
+}
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.login-logo {
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  margin-bottom: 20px;
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  font-family: 'Dancing Script', cursive; /* Use a cursive font */
+  font-size: 2.5rem; /* Adjust the size as needed */
+  font-weight: bold;
+  color: #333; /* Optional: Adjust the color */
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.password-input-container {
+  position: relative;
+}
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  padding-right: 40px; /* Add space for the eye icon */
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #777;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.links {
+  margin-top: 15px;
+}
+
+.links a {
+  display: block;
+  margin: 5px 0;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* Divider styles */
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.divider-text {
+  margin: 0 10px;
+  color: #666;
+  font-size: 14px;
+}
 
 /* Mobile View */
 @media (max-width: 768px) {
