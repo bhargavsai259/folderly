@@ -184,7 +184,7 @@ const Signup = () => {
             required
           >
             <option value="user">User</option>
-            <option value="admin">Admin</option>
+          //  <option value="admin">Admin</option>
           </select>
         </div>
         <button type="submit" disabled={loading} className="signup-button">
