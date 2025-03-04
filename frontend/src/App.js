@@ -1,49 +1,63 @@
+// App.js
 import React, { useEffect } from "react";
 import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ForgotPassword from "./components/ForgotPassword";
-import { BrowserRouter as Router, Routes, Route, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 import AdminPanel from "./components/AdminPanel";
 import { AuthProvider } from "./components/AuthContext";
 import { Toaster } from 'react-hot-toast';
-import { App } from '@capacitor/app';
+import { App as CapApp } from '@capacitor/app';
 
+// Separate component for back button handling using the new useNavigate hook
 function AppBackButtonHandler() {
-  const history = useHistory();
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     // Add listener for the back button event
-    App.addListener('backButton', ({ canGoBack }) => {
+    const handleBackButton = CapApp.addListener('backButton', ({ canGoBack }) => {
       if (canGoBack) {
-        history.goBack(); // Navigate back in the app's history
+        navigate(-1); // Navigate back in the app's history (new syntax)
       } else {
         // If there's no history to go back, exit the app
-        App.exitApp();
+        CapApp.exitApp();
       }
     });
-
+    
     // Clean up the listener when the component unmounts
     return () => {
-      App.removeAllListeners();
+      // Use the returned value to remove just this listener
+      if (handleBackButton) {
+        handleBackButton.remove();
+      }
     };
-  }, [history]);
-
+  }, [navigate]);
+  
   return null; // This component doesn't render anything
+}
+
+// The AppBackButtonHandler needs to be inside Router context
+function AppWithRouter() {
+  return (
+    <>
+      <AppBackButtonHandler />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/adminpanel" element={<AdminPanel />} />
+      </Routes>
+    </>
+  );
 }
 
 function App() {
   return (
     <AuthProvider>
       <Router>
-        <AppBackButtonHandler /> {/* Add the back button handler */}
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Signup />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/adminpanel" element={<AdminPanel />} />
-        </Routes>
+        <AppWithRouter />
         <Toaster 
           position="top-right"
           toastOptions={{
