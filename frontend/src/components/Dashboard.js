@@ -62,12 +62,8 @@ const Dashboard = () => {
             
             setFolders(validFolders);
             
-            // If no folder is selected and we have folders, select the first one
-            if (!selectedFolder && validFolders.length > 0) {
-                setSelectedFolder(validFolders[0]);
-            }
+         
             
-            console.log("Folders filtered:", validFolders);
             setError(null);
         } catch (error) {
             console.error("Error fetching folders:", error);
