@@ -362,7 +362,7 @@ const Dashboard = () => {
                                 <h2>{selectedFolder.name || "Unnamed Folder"}</h2>
                             </>
                         ) : (
-                            <h2>Files</h2>
+                            <h2>Folders</h2>
                         )}
                         <ProfileMenu isAdmin={isAdmin} />
                     </div>
