@@ -68,3 +68,41 @@
   margin-bottom: 10px;
   text-align: center;
 }
+
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding-right: 40px; /* Add padding to the right to make space for the eye icon */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white; /* Set background to white */
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 5px; /* Add padding to make the icon easier to click */
+  border-radius: 50%; /* Optional: Make the background circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; /* Set a fixed width */
+  height: 24px; /* Set a fixed height */
+}
+
+.password-toggle:hover {
+  background: #f0f0f0; /* Optional: Change background on hover */
+}
+
+.password-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
