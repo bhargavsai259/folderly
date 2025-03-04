@@ -29,6 +29,7 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
+//   <!–-  <option value="admin">Admin</option>  -->
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -184,7 +185,6 @@ const Signup = () => {
             required
           >
             <option value="user">User</option>
-          <!–-  <option value="admin">Admin</option>  -->
           </select>
         </div>
         <button type="submit" disabled={loading} className="signup-button">
