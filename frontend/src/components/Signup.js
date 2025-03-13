@@ -13,7 +13,7 @@ const Signup = () => {
     phone: '',
     password: '',
     confirmPassword: '',
-    role: 'user'
+    role: 'user' // Role is hardcoded to 'user'
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
   const [isRegistered, setIsRegistered] = useState(false); // New state to track registration success
 
-  const { username, email, phone, password, confirmPassword, role } = formData;
+  const { username, email, phone, password, confirmPassword } = formData;
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -29,7 +29,6 @@ const Signup = () => {
     e.preventDefault();
     setLoading(true);
     setError('');
-//   <!–-  <option value="admin">Admin</option>  -->
 
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -45,7 +44,7 @@ const Signup = () => {
         email,
         phone,
         password: password,
-        role
+        role: 'user' // Always sending 'user' as the role
       });
       
       // Set registration success instead of navigating immediately
@@ -175,17 +174,6 @@ const Signup = () => {
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
-        </div>
-        <div className="form-group">
-          <label>ACCOUNT TYPE:</label>
-          <select
-            name="role"
-            value={role}
-            onChange={onChange}
-            required
-          >
-            <option value="user">User</option>
-          </select>
         </div>
         <button type="submit" disabled={loading} className="signup-button">
           {loading ? 'Signing up...' : 'SIGN UP'}
